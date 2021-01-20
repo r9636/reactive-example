@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS data_provider;
+CREATE TABLE data_provider(id VARCHAR(16) PRIMARY KEY , name VARCHAR(50) NOT NULL, provider_type VARCHAR(50) NOT NULL);
+DROP TABLE IF EXISTS feed_group;
+CREATE TABLE feed_group( id VARCHAR(16) PRIMARY KEY , data_provider_id VARCHAR(50) NOT NULL, name VARCHAR(50) NOT NULL);
