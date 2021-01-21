@@ -1,8 +1,10 @@
 package com.example.services;
 
 import com.example.entities.FeedGroup;
+import com.example.entities.FeedGroupDTO;
 import com.example.utils.TaskMapper;
 import com.example.repositories.FeedGroupRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Service;
@@ -38,8 +40,11 @@ public class FeedGroupServiceImpl implements FeedGroupService {
     }
 
     @Override
-    public Mono<FeedGroup> saveFeed(FeedGroup feedGroup) {
+    public Mono<FeedGroupDTO> saveFeed(FeedGroup feedGroup) {
 //        feedGroup.setId(UUID.randomUUID().toString());
-        return feedGroupRepository.save(feedGroup);
+        ModelMapper modelMapper = new ModelMapper();
+        return feedGroupRepository.save(feedGroup.setAsNew()).map(feed -> {
+           return modelMapper.map(feed, FeedGroupDTO.class);
+        });
     }
 }

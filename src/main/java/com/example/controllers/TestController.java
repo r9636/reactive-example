@@ -1,6 +1,7 @@
 package com.example.controllers;
 
 import com.example.entities.FeedGroup;
+import com.example.entities.FeedGroupDTO;
 import com.example.services.FeedGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class TestController {
     }
 
     @PostMapping
-    public Mono<FeedGroup> saveFeedGroup(@RequestBody FeedGroup feedGroup){
+    public Mono<FeedGroupDTO> saveFeedGroup(@RequestBody FeedGroup feedGroup){
         return feedGroupService.saveFeed(feedGroup);
     }
 }
