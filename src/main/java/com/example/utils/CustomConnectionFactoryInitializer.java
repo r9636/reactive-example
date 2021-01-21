@@ -1,4 +1,4 @@
-//package com.ubs.example.utils;
+//package com.example.utils;
 //
 //import io.r2dbc.spi.ConnectionFactory;
 //import org.springframework.context.annotation.Bean;

@@ -41,7 +41,7 @@ public class FeedGroupServiceImpl implements FeedGroupService {
 
     @Override
     public Mono<FeedGroupDTO> saveFeed(FeedGroup feedGroup) {
-//        feedGroup.setId(UUID.randomUUID().toString());
+        feedGroup.setId(UUID.randomUUID().toString());
         ModelMapper modelMapper = new ModelMapper();
         return feedGroupRepository.save(feedGroup.setAsNew()).map(feed -> {
            return modelMapper.map(feed, FeedGroupDTO.class);
