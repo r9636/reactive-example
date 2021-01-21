@@ -26,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private AddressRepository addressRepository;
 
     @Override
-    public Mono<Employee> saveEmployee(EmployeeDTO employee) {
+    public Mono<EmployeeDTO> saveEmployee(Employee employee) {
         ModelMapper mapper = new ModelMapper();
         employee.setId(UUID.randomUUID().toString());
 
@@ -39,8 +39,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 //            System.out.println(address);
         }).collect(Collectors.toList());
 
-        employeeRepository.save(employee.setAsNew()).
+        employeeRepository.save(mapper.map(employee, EmployeeDTO.class).setAsNew()).
                 thenMany(addressRepository.saveAll(addresses)).subscribe();
-        return Mono.just(mapper.map(employee,Employee.class));
+        return Mono.just(mapper.map(employee, EmployeeDTO.class));
     }
 }

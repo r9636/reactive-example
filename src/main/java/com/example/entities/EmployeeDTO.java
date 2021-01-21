@@ -19,7 +19,7 @@ public class EmployeeDTO implements Persistable<String> {
     private String id;
     private String name;
     @Transient
-    private List<Address> addresses;
+    private List<AddressDTO> addresses;
 
     @Transient
     private boolean newEmp;

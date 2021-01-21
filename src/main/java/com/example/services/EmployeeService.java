@@ -6,5 +6,5 @@ import com.example.entities.FeedGroupDTO;
 import reactor.core.publisher.Mono;
 
 public interface EmployeeService {
-    Mono<Employee> saveEmployee(EmployeeDTO employee);
+    Mono<EmployeeDTO> saveEmployee(Employee employee);
 }

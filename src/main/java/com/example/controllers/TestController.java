@@ -32,7 +32,7 @@ public class TestController {
     }
 
     @PostMapping("/addEmployee")
-    public Mono<Employee> saveFeedGroup(@RequestBody EmployeeDTO employee){
+    public Mono<EmployeeDTO> saveFeedGroup(@RequestBody Employee employee){
         return employeeService.saveEmployee(employee);
     }
 }
