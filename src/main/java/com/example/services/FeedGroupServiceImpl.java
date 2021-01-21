@@ -6,10 +6,14 @@ import com.example.repositories.FeedGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
+@Transactional
 public class FeedGroupServiceImpl implements FeedGroupService {
 
     private final DatabaseClient databaseClient;
@@ -35,6 +39,7 @@ public class FeedGroupServiceImpl implements FeedGroupService {
 
     @Override
     public Mono<FeedGroup> saveFeed(FeedGroup feedGroup) {
+//        feedGroup.setId(UUID.randomUUID().toString());
         return feedGroupRepository.save(feedGroup);
     }
 }

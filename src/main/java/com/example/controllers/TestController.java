@@ -20,7 +20,6 @@ public class TestController {
 
     @PostMapping
     public Mono<FeedGroup> saveFeedGroup(@RequestBody FeedGroup feedGroup){
-        System.out.println(feedGroup);
         return feedGroupService.saveFeed(feedGroup);
     }
 }
